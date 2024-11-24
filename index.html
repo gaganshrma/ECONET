@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Econet - Connecting Data, Policy, and Scholars</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="bg-dark text-white p-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h1>ECONET</h1>
+      <nav>
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link text-white" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#dashboard">Indicators</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#news">News</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="p-5 text-center">
+      <h2>Welcome to Econet</h2>
+      <p>Connecting Data, Policy, and Scholars in Macroeconomic Research</p>
+      <div id="hero-dashboard" class="d-flex justify-content-around">
+        <!-- Dynamic KPI Cards -->
+        <div class="card p-3 bg-light" id="gdp-card">Loading GDP...</div>
+        <div class="card p-3 bg-light" id="inflation-card">Loading Inflation...</div>
+        <div class="card p-3 bg-light" id="unemployment-card">Loading Unemployment...</div>
+      </div>
+    </section>
+
+    <section id="dashboard" class="p-5">
+      <h3 class="text-center">Interactive Dashboard</h3>
+      <canvas id="chartContainer"></canvas>
+    </section>
+
+    <section id="news" class="p-5 bg-light">
+      <h3>Featured Articles</h3>
+      <div id="articles" class="row">
+        <div class="col-md-4">
+          <article class="p-3 border">
+            <h4>Sample Article 1</h4>
+            <p>Brief summary of recent trends in fiscal policy...</p>
+          </article>
+        </div>
+        <div class="col-md-4">
+          <article class="p-3 border">
+            <h4>Sample Article 2</h4>
+            <p>Global inflation trends in 2024...</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-dark text-white p-3 text-center">
+    <p>© 2024 Econet. All rights reserved.</p>
+    <div>
+      <a href="#" class="text-white me-2">Privacy</a>
+      <a href="#" class="text-white">Terms</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
