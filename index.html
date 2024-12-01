@@ -1,74 +1,126 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Econet - Connecting Data, Policy, and Scholars</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Data Analyzer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        function showSection(sectionId) {
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        function handleUpload(event) {
+            event.preventDefault();
+            // Add your file upload logic here
+            showSection('excel');
+        }
+
+        function handleExcelInteraction() {
+            // Add your excel interaction logic here
+            showSection('summary');
+        }
+    </script>
 </head>
-<body>
-  <header class="bg-dark text-white p-3">
-    <div class="container d-flex justify-content-between align-items-center">
-      <h1>ECONET</h1>
-      <nav>
-        <ul class="nav">
-          <li class="nav-item"><a class="nav-link text-white" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="#about">About Us</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="#dashboard">Indicators</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="#news">News</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section id="home" class="p-5 text-center">
-      <h2>Welcome to Econet</h2>
-      <p>Connecting Data, Policy, and Scholars in Macroeconomic Research</p>
-      <div id="hero-dashboard" class="d-flex justify-content-around">
-        <!-- Dynamic KPI Cards -->
-        <div class="card p-3 bg-light" id="gdp-card">Loading GDP...</div>
-        <div class="card p-3 bg-light" id="inflation-card">Loading Inflation...</div>
-        <div class="card p-3 bg-light" id="unemployment-card">Loading Unemployment...</div>
-      </div>
-    </section>
-
-    <section id="dashboard" class="p-5">
-      <h3 class="text-center">Interactive Dashboard</h3>
-      <canvas id="chartContainer"></canvas>
-    </section>
-
-    <section id="news" class="p-5 bg-light">
-      <h3>Featured Articles</h3>
-      <div id="articles" class="row">
-        <div class="col-md-4">
-          <article class="p-3 border">
-            <h4>Sample Article 1</h4>
-            <p>Brief summary of recent trends in fiscal policy...</p>
-          </article>
+<body class="font-roboto bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-600 p-4 text-white">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold">CSV Data Analyzer</a>
+            <div>
+                <a href="#upload" class="mx-2">Upload CSV</a>
+                <a href="#excel" class="mx-2 hidden" id="excel-link">Excel View</a>
+                <a href="#summary" class="mx-2 hidden" id="summary-link">Summary</a>
+            </div>
         </div>
-        <div class="col-md-4">
-          <article class="p-3 border">
-            <h4>Sample Article 2</h4>
-            <p>Global inflation trends in 2024...</p>
-          </article>
-        </div>
-      </div>
+    </nav>
+
+    <!-- First Page: Upload CSV -->
+    <section id="upload" class="container mx-auto my-10 p-6 bg-white rounded shadow">
+        <h2 class="text-2xl font-bold mb-4">Upload CSV File</h2>
+        <form class="flex flex-col items-center" onsubmit="handleUpload(event)">
+            <input type="file" accept=".csv" class="mb-4 p-2 border rounded">
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Upload</button>
+        </form>
     </section>
-  </main>
 
-  <footer class="bg-dark text-white p-3 text-center">
-    <p>© 2024 Econet. All rights reserved.</p>
-    <div>
-      <a href="#" class="text-white me-2">Privacy</a>
-      <a href="#" class="text-white">Terms</a>
-    </div>
-  </footer>
+    <!-- Second Page: Excel View -->
+    <section id="excel" class="container mx-auto my-10 p-6 bg-white rounded shadow hidden">
+        <h2 class="text-2xl font-bold mb-4">Excel View</h2>
+        <div class="overflow-auto" onclick="handleExcelInteraction()">
+            <table class="min-w-full bg-white">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b">Column 1</th>
+                        <th class="py-2 px-4 border-b">Column 2</th>
+                        <th class="py-2 px-4 border-b">Column 3</th>
+                        <th class="py-2 px-4 border-b">Column 4</th>
+                        <th class="py-2 px-4 border-b">Column 5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="py-2 px-4 border-b">Data 1</td>
+                        <td class="py-2 px-4 border-b">Data 2</td>
+                        <td class="py-2 px-4 border-b">Data 3</td>
+                        <td class="py-2 px-4 border-b">Data 4</td>
+                        <td class="py-2 px-4 border-b">Data 5</td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4 border-b">Data 6</td>
+                        <td class="py-2 px-4 border-b">Data 7</td>
+                        <td class="py-2 px-4 border-b">Data 8</td>
+                        <td class="py-2 px-4 border-b">Data 9</td>
+                        <td class="py-2 px-4 border-b">Data 10</td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4 border-b">Data 11</td>
+                        <td class="py-2 px-4 border-b">Data 12</td>
+                        <td class="py-2 px-4 border-b">Data 13</td>
+                        <td class="py-2 px-4 border-b">Data 14</td>
+                        <td class="py-2 px-4 border-b">Data 15</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="script.js"></script>
+    <!-- Third Page: Summary -->
+    <section id="summary" class="container mx-auto my-10 p-6 bg-white rounded shadow hidden">
+        <h2 class="text-2xl font-bold mb-4">Summary of Descriptive Statistics</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 bg-gray-200 rounded">
+                <h3 class="text-xl font-bold mb-2">Column 1</h3>
+                <p>Mean: 10.5</p>
+                <p>Median: 10</p>
+                <p>Standard Deviation: 2.5</p>
+            </div>
+            <div class="p-4 bg-gray-200 rounded">
+                <h3 class="text-xl font-bold mb-2">Column 2</h3>
+                <p>Mean: 20.5</p>
+                <p>Median: 20</p>
+                <p>Standard Deviation: 3.5</p>
+            </div>
+            <div class="p-4 bg-gray-200 rounded">
+                <h3 class="text-xl font-bold mb-2">Column 3</h3>
+                <p>Mean: 30.5</p>
+                <p>Median: 30</p>
+                <p>Standard Deviation: 4.5</p>
+            </div>
+            <div class="p-4 bg-gray-200 rounded">
+                <h3 class="text-xl font-bold mb-2">Column 4</h3>
+                <p>Mean: 40.5</p>
+                <p>Median: 40</p>
+                <p>Standard Deviation: 5.5</p>
+            </div>
+            <div class="p-4 bg-gray-200 rounded">
+                <h3 class="text-xl font-bold mb-2">Column 5</h3>
+                <p>Mean: 50.5</p>
+                <p>Median: 50</p>
+                <p>Standard Deviation: 6.5</p>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
